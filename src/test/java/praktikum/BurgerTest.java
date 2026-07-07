@@ -43,7 +43,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void testAddIngredientWithNull_IncreasesSize() {
+    public void testAddIngredientWithNullIncreasesSize() {
         burger.setBuns(bunMock);
         int initialSize = burger.ingredients.size();
         burger.addIngredient(null);
@@ -51,14 +51,14 @@ public class BurgerTest {
     }
 
     @Test
-    public void testAddIngredientWithNull_AddsNull() {
+    public void testAddIngredientWithNullAddsNull() {
         burger.setBuns(bunMock);
         burger.addIngredient(null);
         assertNull(burger.ingredients.get(burger.ingredients.size() - 1));
     }
 
     @Test
-    public void testAddIngredients_SizeAfterAdding() {
+    public void testAddIngredientsSizeAfterAdding() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.addIngredient(hotSauce);
@@ -67,27 +67,27 @@ public class BurgerTest {
     }
 
     @Test
-    public void testAddIngredients_ContainsCutlet() {
+    public void testAddIngredientsContainsCutlet() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         assertTrue(burger.ingredients.contains(cutlet));
     }
 
     @Test
-    public void testAddIngredients_ContainsHotSauce() {
+    public void testAddIngredientsContainsHotSauce() {
         burger.setBuns(bunMock);
         burger.addIngredient(hotSauce);
         assertTrue(burger.ingredients.contains(hotSauce));
     }
 
     @Test
-    public void testAddIngredients_ContainsDinosaurMeat() {
+    public void testAddIngredientsContainsDinosaurMeat() {
         burger.setBuns(bunMock);
         burger.addIngredient(dinosaurMeat);
         assertTrue(burger.ingredients.contains(dinosaurMeat));
     }
     @Test
-    public void testRemoveIngredient_SizeAfterRemoval() {
+    public void testRemoveIngredientSizeAfterRemoval() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.addIngredient(hotSauce);
@@ -98,7 +98,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void testRemoveIngredient_FirstElementRemainsUntouched() {
+    public void testRemoveIngredientFirstElementRemainsUntouched() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.addIngredient(hotSauce);
@@ -109,7 +109,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void testRemoveIngredient_SecondElementMovesCorrectly() {
+    public void testRemoveIngredientSecondElementMovesCorrectly() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.addIngredient(hotSauce);
@@ -120,14 +120,14 @@ public class BurgerTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testRemoveIngredient_InvalidIndex() {
+    public void testRemoveIngredientInvalidIndex() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.removeIngredient(5);
     }
 
     @Test
-    public void testMoveIngredient_FromEndToStart() {
+    public void testMoveIngredientFromEndToStart() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.addIngredient(hotSauce);
@@ -138,7 +138,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void testMoveIngredient_FromStartToEnd() {
+    public void testMoveIngredientFromStartToEnd() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.addIngredient(hotSauce);
@@ -149,21 +149,21 @@ public class BurgerTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testMoveIngredient_InvalidSourceIndex() {
+    public void testMoveIngredientInvalidSourceIndex() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.moveIngredient(5, 0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testMoveIngredient_InvalidTargetIndex() {
+    public void testMoveIngredientInvalidTargetIndex() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         burger.moveIngredient(0, 5);
     }
 
     @Test
-    public void testGetPrice_WithMockedBun() {
+    public void testGetPriceWithMockedBun() {
         Mockito.when(bunMock.getPrice()).thenReturn(50.0f);
 
         burger.setBuns(bunMock);
@@ -174,14 +174,14 @@ public class BurgerTest {
     }
 
     @Test
-    public void testGetReceipt_ContainsBun() {
+    public void testGetReceiptContainsBun() {
         Mockito.when(bunMock.getName()).thenReturn("test bun");
         burger.setBuns(bunMock);
         assertTrue(burger.getReceipt().contains("test bun"));
     }
 
     @Test
-    public void testGetReceipt_ContainsIngredients() {
+    public void testGetReceiptContainsIngredients() {
         burger.setBuns(bunMock);
         burger.addIngredient(cutlet);
         assertTrue(burger.getReceipt().contains("cutlet"));
